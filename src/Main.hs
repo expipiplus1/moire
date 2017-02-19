@@ -34,18 +34,16 @@ offsets l s = genericTake (lcm l (s + 1) `div` l) inf
   where
     inf = fromState <$> states
     states = iterate advance initialState
-    initialState :: State
-    initialState = State s'
-    fromState :: State -> [Natural]
-    fromState (State o) =
+    initialState :: Integer
+    initialState = s'
+    fromState :: Integer -> [Natural]
+    fromState o =
       let n = 1 + ((l' - o) `div` (s' + 1))
       in fromInteger <$> genericTake n (iterate (+(s'+1)) o)
-    advance :: State -> State
-    advance (State o) = State $ (o - l') `mod` (s' + 1)
+    advance :: Integer -> Integer
+    advance o = (o - l') `mod` (s' + 1)
     l' = toInteger l
     s' = toInteger s
-
-data State = State{ unState :: Integer }
 
 --------------------------------------------------------------------------------
 -- brute forcing
