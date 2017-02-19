@@ -6,8 +6,6 @@ module Main where
 import           Control.Applicative
 import           Control.Monad
 import           Data.List.Extra
-import qualified Data.List.NonEmpty     as NE
-import           Data.Maybe
 import           Data.String
 import           Numeric.Natural
 import           Test.QuickCheck
