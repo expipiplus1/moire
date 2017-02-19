@@ -10,7 +10,7 @@ maintainer:          moire@monoid.al
 copyright:           2017 Joe Hermaszewski
 category:            Web
 build-type:          Simple
-extra-source-files:  default.nix shell.nix
+extra-source-files:  default.nix shell.nix pkgs.nix haskell-packages.nix
 cabal-version:       >=1.10
 
 executable moire
@@ -24,3 +24,6 @@ executable moire
                      , boxes
   default-language:    Haskell2010
 
+source-repository head
+  type:     git
+  location: https://github.com/expipiplus1/moire
