@@ -1,5 +1,5 @@
 name:                moire
-version:             0.1.0.0
+version:             0.2.0.0
 synopsis:            Calculate 1d moire patterns
 description:         Please see README.md
 homepage:            https://github.com/expipiplus1/moire
@@ -13,16 +13,31 @@ build-type:          Simple
 extra-source-files:  default.nix shell.nix pkgs.nix haskell-packages.nix
 cabal-version:       >=1.10
 
-executable moire
+library
   hs-source-dirs:      src
-  main-is:             Main.hs
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  build-depends:       base
+  exposed-modules:     Moire
+  build-depends:       base >=4.9 && <4.10
                      , QuickCheck
                      , extra
                      , safe
                      , boxes
   default-language:    Haskell2010
+  ghc-options:         -Wall
+
+test-suite test
+  default-language:    Haskell2010
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Test.hs
+  other-modules:
+  build-depends:       base
+                     , moire
+                     , QuickCheck
+                     , extra
+                     , safe
+                     , boxes
+  default-language:    Haskell2010
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N -Wall
 
 source-repository head
   type:     git
